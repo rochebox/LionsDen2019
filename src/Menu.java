@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Menu {
 	
-	public class Item{
+	public static class Item{
 		
 		private double price;
 		private ArrayList<String> ingredient = new ArrayList<String>();
@@ -45,18 +45,23 @@ public class Menu {
 		
 	}
 	
-	public abstract class BeverageItem extends Item{
+	public static abstract class BeverageItem extends Item{
 		
 		public abstract void prepare();
 		
 	}
 	
-	public class Smoothie extends BeverageItem{
+	public static class Smoothie extends BeverageItem{
 
 		public Smoothie(String flavor) {
 			ArrayList <String> listOfFlavors = new ArrayList<String>();
 			listOfFlavors.add("Strawberry");
-			listOfFlavors.add("Banana");
+			listOfFlavors.add("Straberry Banana");
+			listOfFlavors.add("Oreo");
+			listOfFlavors.add("Mango");
+			listOfFlavors.add("Peach");
+			listOfFlavors.add("Wildberry");
+			listOfFlavors.add("Vanilla");
 			if(listOfFlavors.contains(flavor)) {
 				this.addIngredient(flavor);
 				this.prepare();
@@ -74,7 +79,7 @@ public class Menu {
 		
 	}
 	
-	public abstract class BottledDrinks extends BeverageItem{
+	public static abstract class BottledDrinks extends BeverageItem{
 
 		@Override
 		public void prepare() {
@@ -92,6 +97,7 @@ public class Menu {
 			ArrayList <String> listOfFlavors = new ArrayList<String>();
 			listOfFlavors.add("Peach");
 			listOfFlavors.add("Raspberry");
+			listOfFlavors.add("Pomegranate");
 			if(listOfFlavors.contains(flavor)) {
 				this.addIngredient(flavor);
 				this.prepare();
@@ -109,11 +115,106 @@ public class Menu {
 	
 	}	
 
+	public static class Bai extends BottledDrinks{
+
+		public Bai(String flavor) {
+			ArrayList <String> listOfFlavors = new ArrayList<String>();
+			listOfFlavors.add("Cocconut");
+			listOfFlavors.add("Strawberry Banana");
+			if(listOfFlavors.contains(flavor)) {
+				this.addIngredient(flavor);
+				this.prepare();
+				this.chooseBrand();
+			}else {
+				// raise error
+			}
+		}
+		
+		@Override
+		public void chooseBrand() {
+			// TODO Auto-generated method stub
+			this.setBrand("Bai");
+			this.setPrice(7.0);
+		}
+	
+	}	
+
+	public class BodyArmour extends BottledDrinks{
+
+		public BodyArmour(String flavor) {
+			ArrayList <String> listOfFlavors = new ArrayList<String>();
+			listOfFlavors.add("Fruit Punch");
+			if(listOfFlavors.contains(flavor)) {
+				this.addIngredient(flavor);
+				this.prepare();
+				this.chooseBrand();
+			}else {
+				// raise error
+			}
+		}
+		
+		@Override
+		public void chooseBrand() {
+			// TODO Auto-generated method stub
+			this.setBrand("Body Armour");
+		}
+	
+	}
+
+	public class Arizona extends BottledDrinks{
+
+		public Arizona(String flavor) {
+			ArrayList <String> listOfFlavors = new ArrayList<String>();
+			listOfFlavors.add("Green Tea");
+			if(listOfFlavors.contains(flavor)) {
+				this.addIngredient(flavor);
+				this.prepare();
+				this.chooseBrand();
+			}else {
+				// raise error
+			}
+		}
+		
+		@Override
+		public void chooseBrand() {
+			// TODO Auto-generated method stub
+			this.setBrand("Arizona");
+		}
+	
+	}	
+	
+	public class Soda extends BottledDrinks{
+
+		public Soda(String flavor) {
+			ArrayList <String> listOfFlavors = new ArrayList<String>();
+			listOfFlavors.add("Ginger Ale");
+			listOfFlavors.add("Sprite");
+			listOfFlavors.add("Coke");
+			listOfFlavors.add("Fanta");
+			listOfFlavors.add("MinuteMaid Lemonade");
+			if(listOfFlavors.contains(flavor)) {
+				this.addIngredient(flavor);
+				this.prepare();
+				this.chooseBrand();
+			}else {
+				// raise error
+			}
+		}
+		
+		@Override
+		public void chooseBrand() {
+			// TODO Auto-generated method stub
+			this.setBrand("Multiple-Soda");
+		}
+	
+	}	
+	
 	public class Yogurt extends BeverageItem{
 		
 		public Yogurt(String flavor){
 			ArrayList <String> listOfFlavors = new ArrayList<String>();
 			listOfFlavors.add("Strawberry");
+			listOfFlavors.add("Original");
 			if(listOfFlavors.contains(flavor)) {
 				this.addIngredient(flavor);
 				this.prepare();
@@ -132,4 +233,11 @@ public class Menu {
 		
 	}
 	
+	public static void main(String[] args) {
+		Bai mycoco = new Bai("Cocconut");
+		System.out.println(mycoco.getPrice());
+		System.out.println(mycoco.getIngredient());
+		System.out.println(mycoco.getMinutesToPrepare());
+		System.out.println(mycoco.getBrand());
+	}
 }
