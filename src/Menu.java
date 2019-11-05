@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Menu {
 	
-	public static class Item{
+	public class Item{
 		
 		private double price;
 		private ArrayList<String> ingredient = new ArrayList<String>();
@@ -45,13 +45,13 @@ public class Menu {
 		
 	}
 	
-	public static abstract class BeverageItem extends Item{
+	public abstract class BeverageItem extends Item{
 		
 		public abstract void prepare();
 		
 	}
 	
-	public static class Smoothie extends BeverageItem{
+	public class Smoothie extends BeverageItem{
 
 		public Smoothie(String flavor) {
 			ArrayList <String> listOfFlavors = new ArrayList<String>();
@@ -79,7 +79,7 @@ public class Menu {
 		
 	}
 	
-	public static abstract class BottledDrinks extends BeverageItem{
+	public abstract class BottledDrinks extends BeverageItem{
 
 		@Override
 		public void prepare() {
@@ -115,7 +115,8 @@ public class Menu {
 	
 	}	
 
-	public static class Bai extends BottledDrinks{
+	
+	public class Bai extends BottledDrinks{
 
 		public Bai(String flavor) {
 			ArrayList <String> listOfFlavors = new ArrayList<String>();
@@ -231,6 +232,25 @@ public class Menu {
 			this.setMinutesToPrepare(0);
 		}
 		
+	}
+	
+	public abstract class FoodItem extends Item{
+		
+		public abstract void prepare();
+		
+	}
+	
+	public abstract class BreakfastFood extends FoodItem;
+	
+	public class FriedEggCheeseOnEnglishMuffin extends BreakfastFood{
+		
+		public FriedEggCheeseOnEnglishMuffin(String egg, String bread, String meat){
+			this.addIngredient(egg + " cooked egg");
+			this.addIngredient("Cheese");
+			this.addIngredient(bread);
+			this.addIngredient(meat);
+		}
+
 	}
 	
 	public static void main(String[] args) {
